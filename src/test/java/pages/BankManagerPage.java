@@ -9,7 +9,7 @@ public class BankManagerPage {
     private WebDriver driver;
     private ElementHelper elementHelper;
 
-    public BankManagerPage(WebDriver driver) {
+    public BankManagerPage(WebDriver driver){
         this.driver = driver;
         elementHelper = new ElementHelper(driver);
     }
@@ -18,11 +18,11 @@ public class BankManagerPage {
         LoggerUtility.infoTest("The user clicked on add customer element");
     }
     public void clickOpenAccountElement(){
-        elementHelper.clickLocator(BankManagerLocators.openAccountElement);
+        elementHelper.clickJSLocator(BankManagerLocators.openAccountElement);
         LoggerUtility.infoTest("The user clicked on open account element");
     }
     public void clickCustomersElement(){
-        elementHelper.clickLocator(BankManagerLocators.customersElement);
+        elementHelper.clickJSLocator(BankManagerLocators.customersElement);
         LoggerUtility.infoTest("The user clicked on customersElement");
     }
 }

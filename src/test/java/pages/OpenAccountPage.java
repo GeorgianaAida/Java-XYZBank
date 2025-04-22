@@ -11,24 +11,20 @@ public class OpenAccountPage {
     private ElementHelper elementHelper;
     private AlertHelper alertHelper;
 
-    public OpenAccountPage(WebDriver driver) {
+    public OpenAccountPage(WebDriver driver){
         this.driver = driver;
         elementHelper = new ElementHelper(driver);
         alertHelper = new AlertHelper(driver);
     }
     public void selectCustomerName(String fullNameValue){
         elementHelper.selectLocator(OpenAccountLocators.customerNameElement, fullNameValue);
-        LoggerUtility.infoTest("The user selects from Customer value:"+ fullNameValue);
     }
-    public void selectCurrency( String currencyValue){
+    public void selectCurrency(String currencyValue){
         elementHelper.selectLocator(OpenAccountLocators.currencyElement, currencyValue);
-        LoggerUtility.infoTest("The user selected currency:"+ currencyValue);
     }
-    public void clickProcess(){
+    public void selectButton(){
         elementHelper.clickLocator(OpenAccountLocators.processButton);
-        LoggerUtility.infoTest("The user clicked on Process Button");
         alertHelper.acceptAlert();
-        LoggerUtility.infoTest("Alerta a fost acceptata!");
+        LoggerUtility.infoTest("The user clicked on accept alert");
     }
-
 }

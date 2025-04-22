@@ -1,16 +1,16 @@
 package tests;
 
 import org.testng.annotations.Test;
-import pages.AddCustomerPage;
-import pages.BankManagerPage;
-import pages.IndexPage;
-import pages.OpenAccountPage;
+import pages.*;
 import sharedData.SharedData;
 
-public class BankManagerTest extends SharedData {
+import java.awt.*;
+import java.awt.event.KeyEvent;
+
+public class CreateCustomerWithAccountTest extends SharedData {
 
     @Test
-    public void testMethod() {
+    public void testMethod() throws AWTException{
 
         IndexPage indexPage = new IndexPage(driver);
         indexPage.clickManagerLoginMenu();
@@ -18,25 +18,32 @@ public class BankManagerTest extends SharedData {
         BankManagerPage bankManagerPage = new BankManagerPage(driver);
         bankManagerPage.clickAddCustomerElement();
 
-
         String firstNameValue = "Aida";
         String lastNameValue = "Georgiana";
-        String postCodeValue = "121212";
-        String fullNameValue = firstNameValue +" "+ lastNameValue;
+        String postCodeValue = "123456";
+        String fullNameValue = firstNameValue+" "+lastNameValue;
         String currencyValue = "Dollar";
 
         AddCustomerPage addCustomerPage = new AddCustomerPage(driver);
         addCustomerPage.fillFirstName(firstNameValue);
         addCustomerPage.fillLastName(lastNameValue);
-        addCustomerPage.fillPstCode(postCodeValue);
+        addCustomerPage.fillPostCode(postCodeValue);
         addCustomerPage.clickAddCustomerButton();
 
-        bankManagerPage.clickOpenAccountElement();
 
+        bankManagerPage.clickOpenAccountElement();
         OpenAccountPage openAccountPage = new OpenAccountPage(driver);
         openAccountPage.selectCustomerName(fullNameValue);
         openAccountPage.selectCurrency(currencyValue);
-        openAccountPage.clickProcess();
+        openAccountPage.selectButton();
+
+
+
+        bankManagerPage.clickCustomersElement();
+        CustomersPage customersPage = new CustomersPage(driver);
+
+        customersPage.searchCustomers(lastNameValue);
+        customersPage.validateCustomer(firstNameValue, lastNameValue, postCodeValue);
 
     }
 }

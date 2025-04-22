@@ -24,6 +24,9 @@ public class AlertHelper {public WebDriver driver;
         System.out.println(alertOk.getText());
         alertOk.accept();
     }
-
+    public void waitForAlertVisible() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.alertIsPresent());
+    }
 
 }

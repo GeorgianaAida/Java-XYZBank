@@ -7,6 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class SharedData {
+
     public WebDriver driver;
     public String testName;
 
@@ -23,8 +24,5 @@ public class SharedData {
     @AfterMethod
     public void clearEnvironment(){
         driver.quit();
-
-        testName = this.getClass().getSimpleName();
-        LoggerUtility.finishTest(testName);
     }
 }
